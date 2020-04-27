@@ -23,6 +23,7 @@ after_script:
   - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 services:
   - postgresql
+dist: xenial
 addons:
   postgresql: "11"
   apt:
@@ -31,5 +32,5 @@ addons:
       - postgresql-client-11
 before_install:
   - sudo cp /etc/postgresql/{10,11}/main/pg_hba.conf
-  - sudo /etc/init.d/postgresql restart 11
+  - sudo /etc/init.d/postgresql restart
   - export PGHOST=127.0.0.1 PGPORT=5432
