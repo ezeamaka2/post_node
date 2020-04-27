@@ -31,5 +31,5 @@ addons:
       - postgresql-11
       - postgresql-client-11
 before_install:
- - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+ - sudo cp /etc/postgresql/{9.6,10}/main/postgresql.conf
 - sudo /etc/init.d/postgresql restart
