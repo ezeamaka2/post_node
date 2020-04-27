@@ -31,6 +31,6 @@ addons:
       - postgresql-11
       - postgresql-client-11
 before_install:
-  - sudo cp /etc/postgresql/{10,11}/main/pg_hba.conf
+  - sudo cp /etc/postgresql/{10,11}/main/trust/pg_hba.conf
   - sudo /etc/init.d/postgresql restart
   - export PGHOST=127.0.0.1 PGPORT=5432
