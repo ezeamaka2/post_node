@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todos");
-    res.json(allTodos.rows);
+    res.status(200).json({ message: allTodos.rows });
   } catch (err) {
     console.error(err.message);
   }
