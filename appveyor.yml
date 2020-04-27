@@ -6,9 +6,3 @@ install:
 test_script:
   - npm run test
 build: off
-before_test:
-  - SET PGUSER=postgres
-  - SET PGPASSWORD=collinic
-  - PATH=C:\Program Files\PostgreSQL\11\bin\;%PATH%
-services:
-  - postgresql11
