@@ -7,7 +7,7 @@ describe("Message", () => {
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.message).to.be.instanceOf(Array);
-        res.body.messages.forEach((m) => {
+        res.body.message.forEach((m) => {
           expect(m).to.have.property("description");
         });
         done();
