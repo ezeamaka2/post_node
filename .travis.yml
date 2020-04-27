@@ -12,7 +12,7 @@ cache:
 install: npm ci
 after_success: npm run coverage
 before_script:
-  - psql -c 'create database testdb;' -U postgres psql template1
+  - psql -c 'create database testdb;' -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
     > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
@@ -31,4 +31,4 @@ addons:
       - postgresql-client-11
 before_install:
   - sudo cp /etc/postgresql/{10,11}/main/pg_hba.conf
-  - sudo /etc/init.d/postgresql {start|stop|restart|reload|force-reload|status}
+  - sudo /etc/init.d/postgresql restart
