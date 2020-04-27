@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register --exit",
     "dev": "nodemon --exec babel-node app.js",
-    "prestart": "babel app.js --out-dir build"
+    "prestart": "babel app.js --out-dir build",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",

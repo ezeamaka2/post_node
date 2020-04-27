@@ -1,0 +1,34 @@
+language: node_js
+env:
+  global:
+    - CC_TEST_REPORTER_ID=f8db142037c96fe7460525bcc1bbf78a4159a6ef327778b1ade0b096cc4388e9
+matrix:
+  include:
+    - node_js: 12
+  branches:
+cache:
+  directories:
+    - node_modules
+install: npm ci
+after_success: npm run coverage
+before_script:
+  - psql -c 'create database testdb;' -U postgres
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+    > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - "./cc-test-reporter before-build"
+script:
+  - npm run test
+after_script:
+  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+services:
+  - postgresql
+addons:
+  postgresql: "11"
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
+before_install:
+  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+  - sudo /etc/init.d/postgresql restart
