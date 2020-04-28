@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import indexRoute from "./routes/index";
+import homeRoute from "./routes/home";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 //middlewears
 app.use(cors());
 app.use(express.json());
-app.use("/todos", indexRoute);
+app.use("/todos", homeRoute);
 
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
 
