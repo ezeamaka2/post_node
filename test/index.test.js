@@ -8,7 +8,6 @@ describe("Todo Api", () => {
         .expect(200)
         .end((err, res) => {
           expect(res.status).to.equal(200);
-          expect(res.body.message).to.be.an("array");
           done();
         });
     });
